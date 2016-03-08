@@ -616,7 +616,7 @@ CSQLHelper::CSQLHelper(void)
 	m_bAcceptHardwareTimerActive=false;
 	m_iAcceptHardwareTimerCounter=0;
 	m_bDisableEventSystem = false;
-	m_ShortLogInterval = 5;
+	m_ShortLogInterval = 1;
 	m_bPreviousAcceptNewHardware = false;
 
 	SetDatabaseName("domoticz.db");
@@ -2315,11 +2315,10 @@ bool CSQLHelper::OpenDatabase()
 	}
 	if (!GetPreferencesVar("ShortLogInterval", nValue))
 	{
-		nValue = 5;
+		nValue = 1;
 		UpdatePreferencesVar("ShortLogInterval", nValue);
 	}
-	if (nValue < 1)
-		nValue = 5;
+	
 	m_ShortLogInterval = nValue;
 	if (!GetPreferencesVar("DisplayPowerUsageInkWhGraph", nValue))
 	{
